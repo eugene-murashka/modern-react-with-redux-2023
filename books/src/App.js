@@ -45,13 +45,15 @@ function App () {
         setBooks(updatedBooks);
     };
 
-    const createBook = (title) => {
+    const createBook = async (title) => {
+        const response = await axios.post("http://localhost:3001/books/",
+        {
+            title
+        });
+
         const updatedBooks = [
             ...books,
-            {
-                id: Math.round(Math.random() * 9999),
-                title: title
-            }
+            response.data
         ];
         
         setBooks(updatedBooks);
