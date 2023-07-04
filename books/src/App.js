@@ -8,7 +8,7 @@ function App () {
 
     const fetchBooks = async () => {
         const response = await axios.get("http://localhost:3001/books");
-        
+
         setBooks(response.data);
     };
 
@@ -16,10 +16,17 @@ function App () {
         fetchBooks();
     }, []);
 
-    const editBookById = (id, newTitle) => {
+    const editBookById = async (id, newTitle) => {
+        const response = await axios.patch(`http://localhost:3001/books/${id}`,
+        { 
+            title: newTitle 
+        });
+
+        console.log(response);
+
         const updatedBooks = books.map((book) => {
             if (book.id === id){
-                return { ...book, title: newTitle };
+                return { ...book, ...response.data };
             }
 
             return book;
