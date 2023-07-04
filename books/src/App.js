@@ -3,7 +3,7 @@ import axios from "axios";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
 
-function App () {
+function App() {
     const [books, setBooks] = useState([]);
 
     const fetchBooks = async () => {
@@ -17,15 +17,12 @@ function App () {
     }, []);
 
     const editBookById = async (id, newTitle) => {
-        const response = await axios.patch(`http://localhost:3001/books/${id}`,
-        { 
+        const response = await axios.patch(`http://localhost:3001/books/${id}`, { 
             title: newTitle 
         });
 
-        console.log(response);
-
         const updatedBooks = books.map((book) => {
-            if (book.id === id){
+            if (book.id === id) {
                 return { ...book, ...response.data };
             }
 
@@ -36,7 +33,7 @@ function App () {
     };
 
     const deleteBookById = async (id) => {
-        const response = await axios.delete(`http://localhost:3001/books/${id}`);
+        await axios.delete(`http://localhost:3001/books/${id}`);
 
         const updatedBooks = books.filter((book) => {
             return book.id !== id;
@@ -46,15 +43,11 @@ function App () {
     };
 
     const createBook = async (title) => {
-        const response = await axios.post("http://localhost:3001/books/",
-        {
+        const response = await axios.post("http://localhost:3001/books/", {
             title
         });
 
-        const updatedBooks = [
-            ...books,
-            response.data
-        ];
+        const updatedBooks = [...books, response.data];
         
         setBooks(updatedBooks);
     };
