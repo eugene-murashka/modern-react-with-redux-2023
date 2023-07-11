@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useContext } from "react";
-import BooksContext from "../context/books";
+import useBooksContext from "../hooks/use-books-context";
 
 function BookEdit ({ book, onSubmit }) {
     const [title, setTitle] = useState(book.title);
-    const { editBookById } = useContext(BooksContext);
+    const { editBookById } = useBooksContext();
 
     const handleSubmit = (evant) =>{
         evant.preventDefault();
