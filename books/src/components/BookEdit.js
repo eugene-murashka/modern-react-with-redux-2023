@@ -16,8 +16,6 @@ function BookEdit ({ book, onSubmit }) {
         setTitle(evant.target.value);
     };
 
-    console.log("tilte: ", title);
-
     return (
         <form className="book-edit" onSubmit={handleSubmit}>
             <label>Title</label>
