@@ -1,42 +1,28 @@
-import { GoBell, GoDatabase } from "react-icons/go";
-import Button from "./Button";
+import Accordion from "./components/Accordion";
 
 function App() {
-    return (
-        <div>
-      <div>
-        <Button 
-            secondary
-            rounded
-            outline
-        >
-          <GoBell />
-          Click me!!
-        </Button>
-      </div>
-      <div>
-        <Button danger>
-          Buy Now!
-        </Button>
-      </div>
-      <div>
-        <Button warning>
-          <GoDatabase />
-          See Deal!
-        </Button>
-      </div>
-      <div>
-        <Button secondary>
-          Hide Ads!
-        </Button>
-      </div>
-      <div>
-        <Button primary rounded>
-          Something!
-        </Button>
-      </div>
-    </div>
-    );
+  const items = [
+    {
+      id: "slkdjf",
+      label: "Can I use JavaScript on a project?",
+      content:
+        "You can use JavaScript on any project you want. You can use JavaScript on any project you want. You can use JavaScript on any project you want.",
+    },
+    {
+      id: "igiifkg",
+      label: "Can I use React on a project?",
+      content:
+        "You can use JavaScript on any project you want. You can use JavaScript on any project you want. You can use JavaScript on any project you want.",
+    },
+    {
+      id: "mdjdj",
+      label: "Can I use C# on a project?",
+      content:
+        "You can use JavaScript on any project you want. You can use JavaScript on any project you want. You can use JavaScript on any project you want.",
+    },
+  ];
+
+  return <Accordion items={items} />;
 }
 
 export default App;
