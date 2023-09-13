@@ -1,0 +1,29 @@
+import useNavigation from "../hooks/use-navigation";
+import classNames from "classnames";
+
+function Link({ to, children, className, activeClassName }) {
+  const { currentPath, navigate } = useNavigation();
+
+  const classes = classNames(
+    "text-blue-500",
+    className,
+    currentPath === to && activeClassName
+  );
+
+  const handler = (event) => {
+    if (event.metaKey || event.ctrlKey) {
+      return;
+    }
+    event.preventDefault();
+
+    navigate(to);
+  };
+
+  return (
+    <a className={classes} href={to} onClick={handler}>
+      {children}
+    </a>
+  );
+}
+
+export default Link;
