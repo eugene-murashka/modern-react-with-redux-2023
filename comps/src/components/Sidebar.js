@@ -5,6 +5,7 @@ function Sidebar() {
     { pathToShow: "Accordion", to: "/accordion" },
     { pathToShow: "Dropdown", to: "/dropdown" },
     { pathToShow: "Buttons", to: "/buttons" },
+    { pathToShow: "Modal", to: "/modal" },
   ];
 
   const renderedLinks = links.map((link) => {

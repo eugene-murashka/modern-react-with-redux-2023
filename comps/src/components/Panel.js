@@ -1,13 +1,13 @@
 import classNames from "classnames";
 
 function Panel({ children, className, ...rest }) {
-  const resultClassNames = classNames(
+  const finalClassNames = classNames(
     "border rounded p-3 shadow bg-white w-full",
     className
   );
 
   return (
-    <div {...rest} className={resultClassNames}>
+    <div {...rest} className={finalClassNames}>
       {children}
     </div>
   );

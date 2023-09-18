@@ -1,5 +1,5 @@
-import useNavigation from "../hooks/use-navigation";
 import classNames from "classnames";
+import useNavigation from "../hooks/use-navigation";
 
 function Link({ to, children, className, activeClassName }) {
   const { currentPath, navigate } = useNavigation();
@@ -10,7 +10,7 @@ function Link({ to, children, className, activeClassName }) {
     currentPath === to && activeClassName
   );
 
-  const handler = (event) => {
+  const handleClick = (event) => {
     if (event.metaKey || event.ctrlKey) {
       return;
     }
@@ -20,7 +20,7 @@ function Link({ to, children, className, activeClassName }) {
   };
 
   return (
-    <a className={classes} href={to} onClick={handler}>
+    <a className={classes} href={to} onClick={handleClick}>
       {children}
     </a>
   );
