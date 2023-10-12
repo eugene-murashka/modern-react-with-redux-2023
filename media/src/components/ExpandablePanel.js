@@ -3,9 +3,11 @@ import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 function ExpandablePanel({ header, children }) {
   const [expanded, setExpanded] = useState(false);
+
   const handleClick = () => {
     setExpanded((currentExpanded) => !currentExpanded);
   };
+
   return (
     <div className="mb-2 border rounded">
       <div className="flex p-2 justify-between items-center">

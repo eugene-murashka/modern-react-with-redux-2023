@@ -1,9 +1,9 @@
-import { useCallback, useState } from "react";
+import { useState, useCallback } from "react";
 import { useDispatch } from "react-redux";
 
-export default function useThunk(thunk) {
+export function useThunk(thunk) {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingError, setloadingError] = useState(null);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
   const runThunk = useCallback(
@@ -11,15 +11,11 @@ export default function useThunk(thunk) {
       setIsLoading(true);
       dispatch(thunk(arg))
         .unwrap()
-        .catch((error) => {
-          setloadingError(error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false));
     },
     [dispatch, thunk]
   );
 
-  return [runThunk, isLoading, loadingError];
+  return [runThunk, isLoading, error];
 }
